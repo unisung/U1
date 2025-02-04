@@ -1,0 +1,4 @@
+/* 여기서 p는 태그 선택자입니다. */
+p{
+  text-align: center;  color: blue;
+}
