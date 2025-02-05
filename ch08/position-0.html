@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p{
+      width: 500px;
+      height: 200px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      line-height: 2;
+    }
+   #static{       position: static;}
+    #relative-1{
+      position: relative;
+    }
+    #relative-2{
+      position: relative;
+      top: -50px;
+      left: 50px;
+    }
+    #fixed, ul{
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      width: 200px;
+      height: 100px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <p id="static">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget hendrerit massa. Quisque at efficitur enim. Aenean feugiat euismod urna eget ullamcorper. Vestibulum orci lacus, interdum ut ligula in, tincidunt tincidunt tortor. Maecenas in iaculis mauris, et iaculis dui. </p>
+
+<p id="relative-1">Quisque et lacus et arcu ornare porttitor. Pellentesque molestie viverra risus. Aliquam vel odio interdum, convallis erat non, lacinia lacus. Mauris vitae lectus ac urna mollis ultrices quis eu nibh.non porta venenatis. Quisque lacinia mauris pellentesque, posuere ex id, ultrices augue.</p>
+
+<p id="relative-2">Pellentesque pharetra lorem quis eros sollicitudin, ut dignissim sem euismod. Maecenas ligula ipsum, tempor non facilisis vitae, laoreet tristique massa. Vestibulum eu mi velit. Curabitur vulputate augue utvarius iaculis libero, non pretium ligula tincidunt sit amet.</p>
+<p id="fixed">
+  <ul style="list-style-type: none;">
+    최근본 상품
+    <li>갤럭시5 pro</li>
+    <li>gram360</li>
+  </ul>
+</p>
+</body>
+</html>
