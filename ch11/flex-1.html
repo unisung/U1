@@ -6,7 +6,8 @@
   <title>Document</title>
   <style>
     .container {
-     width: 700px;
+      display: flex; /*flex container 지정*/
+      width: 700px;
       border: 1px solid #000;
       background-color: #eee;
       margin-bottom: 30px;
@@ -26,18 +27,17 @@
     .box:nth-child(even) {
       background-color: rgb(35, 220, 35);
     }
-    
-    #opt1 {
+    #opt1{
+      flex-direction: row;
+    }
+    #opt2{
       flex-direction: row-reverse;
     }
-    #opt2 {
+    #opt3{
       flex-direction: column;
     }
-    #opt3 {
+    #opt4{
       flex-direction: column-reverse;
-    }
-    #opt4 {
-      flex-direction: row;
     }
   </style>
 </head>
