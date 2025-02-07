@@ -6,9 +6,17 @@
   <title>Document</title>
   <style>
     ul{list-style-type: none; line-height: 2;}
-    #signup input:checked +  label{
+    /* #signup input:checked +  label{
       color: red;
       font-weight: bold;
+    } */
+    #signup input:not[type=radio]{
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 5px;
+      width: 200px;
+      color: aqua;
+      background-color: chartreuse;
     }
   </style>
 </head>
@@ -20,10 +28,12 @@
       <li>
         <input type="radio" name="room" id="basic">
         <label for="basic">기본형(최대 2인)</label>
+        <input type="text" name="price" id="price" value="60,000원/일" readonly>
       <li>
       <li>
         <input type="radio" name="room" id="family">
         <label for="family">가족형(최대 8인)</label>
+        <input type="text" name="price" id="price" value="160,000원/일" readonly>
       </li>
     </ul>
     </fieldset> 
