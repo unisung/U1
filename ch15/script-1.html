@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트</title>
+  <style>
+    body{text-align: center;}
+    h1{color: blue;}
+  </style>
+</head>
+<body>
+  <!-- <h1 id="heading" onclick="myFun()">자바스크립트</h1> -->
+  <h1 id="heading">자바스크립트</h1>
+  <p id="text">위 텍스트를 클릭해 보세요</p>
+  <script>
+    // 자바스크립트 코드의 변수 선언 var 변수명; var 변수명=값;
+    // var -> let 으로 변경
+    // let heading = document.getElementById('heading');
+    let heading = document.querySelector('#heading');// css의 선택자형태로 요소 선택
+    heading.onclick = function(){
+     heading.style.color = 'red';
+    }
+   // function myFun(){
+   //   var heading = document.getElementById('heading');
+   //   heading.style.color = 'red';
+   // }
+   </script>
+</body>
+</html>
