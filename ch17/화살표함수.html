@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function hi(){
+    //   console.log('안녕하세요');
+    // }
+
+    // const hi = function(){
+    //   console.log('안녕하세요');
+    // }
+    const hi = () => console.log('안녕하세요');
+    hi();
+
+    // function hi2(user){
+    //   return '안녕하세요 '  + user + '님';
+    // }
+    // console.log(hi2('홍길동'));
+   
+    // const hi2 = function(user){
+    //   return '안녕하세요 '  + user + '님';
+    // }
+
+    const hi2 = user => '안녕하세요 '  + user + '님';
+    console.log(hi2('홍길동'));
+
+    // function sum(a,b){
+    //   return a+b;
+    // }
+    // let sum = function(a,b){return a+b;}
+
+    let sum = (a,b) => a+b;
+    console.log(sum(10,20));
+  </script>
+</body>
+</html>

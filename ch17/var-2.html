@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- var로 변수선언시 문제점: hoisting, 변수 재선언 체크불가  -->
+  <script>
+    var x = 10;
+    function displayNumber(){
+      console.log(`x is ${x}`);
+      console.log(`y is ${y}`);
+      var y = 20; // 지역변수 선언 및 값 할당, y는 함수 내에서 선언되었으므로 함수 내에서만 유효
+    }
+    displayNumber();
+  </script>
+  <script>
+    var seed = 3;
+    for(let i=1;i<=5;i++){
+       var seed = 5; //재선언
+       var result = seed * i;
+       console.log(`${seed} * ${i} = ${result}`);
+    }
+  </script>
+</body>
+</html>

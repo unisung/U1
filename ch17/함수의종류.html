@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수의 종류 4가지</title>
+</head>
+<body>
+  <script>
+    // 1. 매개변수 받고 처리 후 결과값을 리턴하는 함수
+    function addNumber(num1, num2){
+      let sum = num1 + num2;
+      return sum;//결과 리턴
+    }
+    // 2. 매개변수 받고 (결과값을 리턴하지 않고)처리만 하는 함수 - consumer함수
+    function printNumber(num1, num2){
+      let sum = num1 + num2;
+      console.log(`결과값: ${sum}`); //return문이 없음, 대신 내부에서 출력
+    }
+    // 3. 매개변수 받지 않고 결과값을 리턴하는 함수 - supplier함수
+    function sayHello(){
+      return "hello!!!";
+    }
+    // 4. 매개변수 받지 않고 (결과값을 리턴하지 않고)처리만 하는 함수
+    function sayGoodbye(){
+      console.log("goodbye!!!"); //리턴문이 없음, 대신 내부에서 출력
+    }
+
+    // 1. 매개변수 받고 처리 후 결과값을 리턴하는 함수
+    let result1 = addNumber(2, 3);
+    alert(`결과값: ${result1}`);
+    // 2. 매개변수 받고 (결과값을 리턴하지 않고)처리만 하는 함수
+    printNumber(2, 3);
+    // 3. 매개변수 받지 않고 결과값을 리턴하는 함수
+    let result2 = sayHello();
+    alert(result2);
+    // 4. 매개변수 받지 않고 (결과값을 리턴하지 않고)처리만 하는 함수
+    sayGoodbye();
+  </script>
+</body>
+</html>
