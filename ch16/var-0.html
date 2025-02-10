@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var num; //변수 선언
+    console.log(num, typeof num);
+    num=20; //숫자형
+    console.log(num, typeof num);
+    num = 'John'; //문자열형
+    console.log(num, typeof num);
+    num = true; //불린형
+    console.log(num, typeof num);
+
+    input = prompt('숫자를 입력하세요.');
+    alert('입력한 숫자:'+input+"입력한 타입:"+typeof input);
+    // alert(input * 10);
+    let result = eval(input*10);//eval()함수는 문자열을 자바스크립트 코드로 실행
+    alert('input타입:'+typeof input);
+    console.log(result, input, typeof input);
+
+    let one='20';
+    let two=10;
+    one+two; //문자열과 숫자를 더하면 문자열로 변환
+    console.log(one+two, typeof one+two);
+  </script>
+</body>
+</html>

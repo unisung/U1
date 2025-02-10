@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+ Number('123') // 123
+ alert(Number('123ABC')); // NaN() -//문자열이 숫자로 변환될 수 없는 경우 NaN(Not a Number)을 반환
+
+ parseInt('123') // 123
+ parseInt('123.45') // 123
+ alert(parseInt('123ABC')); // 123 //숫자로 된  부분만 숫자로 변환
+
+ parseFloat('123') // 123
+ parseFloat('123.45') // 123.45
+ alert(parseFloat('123ABC')); // 123
+
+ String(123) // '123'
+ String(true) // 'true'
+
+// 값이 0이면 false, 그 외에는 true
+ Boolean(1) // true
+ Boolean(0) // false
+ Boolean(-1) // true
+
+ //문자열은 빈 문자열이면 false, 그 외에는 true
+ Boolean('ABC') // true
+ Boolean('') // false
+
+ let str1 = "Hello";
+ let str2 = "Hell";
+ console.log(str1 > str2); // true - 사전에서 str1이 뒤에 있음
+ console.log('abc' > 'abf'); // false - 사전에서 'abf'가 뒤에 있음, 97 98 99 > 97 98 102
+  </script>
+</body>
+</html>
