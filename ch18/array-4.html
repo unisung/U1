@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Array 객체의 메서드</title>
+</head>
+<body>
+  <p>slice 메서드 사용하기</p>
+	<script>
+		// Do it! 인수 개수에 따라 slice 메서드 사용하기
+		let colors = ["red", "green", "blue", "white", "black"];
+		
+		document.write(`원본 배열 : ${colors}<br>`); // 원본 배열 출력
+		document.write(`colors.slice(2) : ${colors.slice(2)}<br>`); // 인수가 1개일 경우 - 인덱스 2부터 끝까지 반환
+		document.write(`colors.slice(2, 4) : ${colors.slice(2, 4)}<br>`); // 인수가 2개일 경우 - 인덱스 2부터 3까지 반환
+		document.write('<hr>');
+		document.write(`reverse된 배열 : ${colors.reverse()}<br>`); // reverse된 배열 출력
+
+		document.write('<hr>');
+		document.write(`오름차순정렬된 배열 : ${colors.sort()}<br>`); // 정렬된 배열 출력
+
+		document.write('<hr>');
+		document.write(`내림차순정렬된 배열 : ${colors.sort().reverse()}<br>`); // 정렬된 배열 출력
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Array 객체의 메서드</title>
+	<style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+			font-size: 1.2em;
+    }
+		hr {
+			width: 100%;			
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<script>
+			// Do it! Array 객체의 다양한 메서드 연습하기
+	
+			let nums = [1, 2, 3]; // 배열 생성
+			let chars = ["a", "b", "c", "d"]; // 배열 생성
+	
+			// 두 개의 배열 합치기
+	    let numsChars = nums.concat(chars); // [1, 2, 3, "a", "b", "c", "d"]
+			let charsNums = chars.concat(nums); //	["a", "b", "c", "d", 1, 2, 3]
+			document.write(`nums에 chars 합치면 : [${numsChars}], <br> chars에 nums 합치면 [${charsNums}]`);
+			document.write("<hr>");
+
+			// 배열 안의 요소 합치기
+			//[1, 2, 3] -> "1, 2, 3"
+			let string1 = nums.join(", ");
+			document.write(`결과 : ${string1}<br>`);
+			string1 = nums.join("/");
+			document.write(`결과 : ${string1}<br>`);
+			string1 = nums.join();
+			document.write(`결과 : ${string1}<br>`);
+
+			//["a", "b", "c", "d"] -> "a, b, c, d"
+	    let string2 = chars.join(", ");
+			// 요소 추가 - 새로운 length 값 반환
+	    document.write(`결과 : ${string2}`);
+			document.write("<hr>");
+
+			// 요소 추가 - 새로운 length 값 반환 - push(append), unshift(인덱스0번에 추가)
+			let ret1 = nums.push(4, 5); // 배열 끝에 4, 5 추가
+			document.write(`length : ${ret1} | 배열: ${nums}<br>`); 
+			let ret2 = nums.unshift(0); // 배열 앞에 0 추가
+			document.write(`length : ${ret2} | 배열: ${nums}<br>`); 
+
+			// 요소 추출 - 꺼낸 요소 반환 - pop(인덱스마지막 요소꺼냄), shift(인덱스0번 요소꺼냄)
+			let popped1 = chars.pop(); // 배열 끝 요소 꺼내기
+			document.write(`꺼낸 요소 : ${popped1} | 배열: ${chars}<br>`);
+			let shifted1 = chars.shift(); // 배열 앞 요소 꺼내기
+			document.write(`꺼낸 요소 : ${shifted1} | 배열: ${chars}<br>`);
+
+		</script>
+	</div>
+</body>
+</html>

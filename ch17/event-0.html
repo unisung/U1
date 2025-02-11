@@ -24,12 +24,19 @@
     <li><a href="#" onclick="changeBg('green')">Green</a></li>
     <li><a href="#" onclick="changeBg('orange')">Orange</a></li>
     <li><a href="#" onclick="changeBg('purple')">Purple</a></li>
+    <li><a href="#" onclick="getEvent(this)">Orange</a></li>
   </ul>
   <script>
      function changeBg(color){
       let result = document.getElementById('result');
        result.style.backgroundColor = color;
      }
+  </script>
+  <script>
+    function  getEvent(e){
+      console.log(e.innerText);
+      changeBg(e.innerText);
+    }
   </script>
 </body>
 </html>

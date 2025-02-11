@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    table,td{
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+    td{
+      padding: 10px;
+      font-size: 0.9em; /* 0.9 x 16px */
+    }
+  </style>
+</head>
+<body>
+  <div>
+  <button onclick="reserv()">예약</button> <button onclick="reset()">취소</button>
+  </div>
+  <h1>자리 배치도</h1>
+  <script>//몫, 나머지
+    let memNum = parseInt(prompt('입장객은 몇 명인가요?.')); 
+    let colNum = parseInt(prompt('한 줄에 몇 명씩 앉습니까?.'));
+
+     if(memNum % colNum == 0 ){ //나누어 떨어지면
+      rowNum = memNum / colNum;
+     }
+     else{ //나누어 떨어지지 않으면
+      rowNum = parseInt(memNum / colNum) + 1;
+     }
+
+     document.write('<table>');
+      for(let i=0; i<rowNum; i++){ //행
+        document.write('<tr>');
+        for(let j=0; j<colNum; j++){ //열
+          let seatNum = i*colNum + j + 1; //좌석번호
+          if(seatNum > memNum){
+            break;
+          }
+          document.write(`<td onclick="changeBg(this)">${seatNum}</td>`);
+        }
+        document.write('</tr>');
+      }
+      document.write('</table>');
+  </script>
+  <script>
+    flag = true;//예약상태 - true: 예약가능, false: 예약불가
+    var seatNum=-1;
+
+    function changeBg(obj){
+      if(flag){
+        if(seatNum != -1){
+          seatNum.style.backgroundColor = '';
+        }
+        obj.style.backgroundColor = 'yellow';
+        seatNum = obj;
+      }
+    }
+    function reserv(){
+          
+      flag = false;
+    }
+    function reset(){
+      flag = true;
+    }
+  </script>
+</body>
+</html>
