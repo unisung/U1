@@ -53,12 +53,16 @@
       document.write('</table>');
   </script>
   <script>
-    flag = true;//예약상태 - true: 예약가능, false: 예약불가
+    flag = false;//예약상태 - true: 예약가능, false: 예약불가
     var seatNum=-1;
 
     function changeBg(obj){
-      if(flag){
+      if(flag==true){
         if(seatNum != -1){
+          if(seatNum == obj){
+            alert('이미 예약된 자리입니다.');
+            return;
+           }
           seatNum.style.backgroundColor = '';
         }
         obj.style.backgroundColor = 'yellow';
@@ -66,11 +70,11 @@
       }
     }
     function reserv(){
-          
-      flag = false;
+      flag = true;
     }
     function reset(){
-      flag = true;
+      seatNum.style.backgroundColor = '';
+      flag = false;
     }
   </script>
 </body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <img src="images/cat.jpg" id="cat">
+   </div>
+   <script>
+    let cat = document.querySelector('#cat');
+    //cat.onclick = function(e) {   alert(this.src);}
+    cat.onclick =(e) => alert(cat.src);
+    
+     // e) => {alert('이미지를 클릭했습니다.'); alert(this.src);}
+   </script>
+   <hr>
+   <div class="container">
+    <img src="images/kitty-1.png" id="cat2">
+   </div>
+   <script>
+    let cat2 = document.querySelector('#cat2');
+    cat2.onclick = changePic;
+
+    function changePic(){
+      cat2.src='images/kitty-2.png';
+    }
+   </script>
+   
+</body>
+</html>
