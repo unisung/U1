@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body onload="openWin()">
+  <p>문서를 열면 팝업 창이 표시됩니다</p>
+  <button onclick="popWin()">공지사항 열기</button>
+  <script>
+    // Do it! Window 객체 연습하기 - 팝업 창에 notice.html 표시하기
+     // window.open("notice.html", "", "width=500, height=400");
+    // function popWin() {
+    //   var name = window.open("notice.html", "pop", "width=500, height=400, left=100, top=200");
+    //   console.log(name);
+    // }
+      let blocked = false;
+
+      function openWin() {
+        let newWin = window.open("notice.html", "pop", "width=500, height=400, left=100, top=200");
+
+        if (newWin == null) {
+          alert("팝업 차단기능을 해제해 주세요.");
+        } 
+      }
+  </script>
+</body>
+</html>

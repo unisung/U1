@@ -12,7 +12,7 @@
     }
     #container{
       display:flex;
-      justify-content:center;
+      justify-content:space-evenly;
       align-items:center;
       min-height:100vh;
     }
@@ -29,8 +29,21 @@
 <body>
   <div id="container">
     <p>현재 시각 <span id="current" class="display"></span></p>
+    <!-- window.close();문서자신을 닫음 -->
+     <p>
+    <!-- <button onclick="javascript:window.close();">닫기</button> -->
+    <button onclick="winClose()">닫기</button>
+    </p>
   </div>
 
+  <script>
+    function winClose(){
+      let currentText = document.getElementById("current").innerText;
+      alert(currentText);
+      window.opener.document.getElementById("bttn").innerText = currentText;
+      window.close();
+    }
+  </script>
   <script>
     function displayNow() {  // 시간 계산 함수
       // let result = document.querySelector("#current");  
@@ -39,7 +52,7 @@
       let now = new Date();     // Date 객체의 인스턴스를 만듦 - 현재시간      
       let currentTime = now.toLocaleTimeString();     //  toLocaleTmeString() 메서드를 사용해 지역에 맞는 시간을 가져옴
 
-      result.innerHTML = "<i>"+currentTime+"</i>";   // id="current" 인 요소에 현재 시간 표시
+      result.innerHTML = currentTime;   // id="current" 인 요소에 현재 시간 표시
       console.log(now.getFullYear(), 
                   now.getMonth()+1, 
                   now.getDate(), 
