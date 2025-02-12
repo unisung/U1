@@ -52,15 +52,18 @@
 
       // 체크박스의 상태가 변경될 때마다 이벤트 발생
       checkbox.addEventListener('change',function(){
-        if(checkbox.checked){
-          proceedButton.classList.remove('disabled'); //  disabled 클래스 제거    
-          proceedButton.classList.add('enabled');// enabled 클래스 추가
-          proceedButton.disabled = false;// disabled 속성 제거
-        }else{
-          proceedButton.classList.remove('enabled');  // .enabled 클래스 제거
-          proceedButton.classList.add('disabled');  // .disabled 클래스 추가
-          proceedButton.disabled = true;  // 버튼 비활성화
-        }
+        // if(checkbox.checked){
+        //   proceedButton.classList.remove('disabled'); //  disabled 클래스 제거    
+        //   proceedButton.classList.add('enabled');// enabled 클래스 추가
+        //   proceedButton.disabled = false;// disabled 속성 제거
+        // }else{
+        //   proceedButton.classList.remove('enabled');  // .enabled 클래스 제거
+        //   proceedButton.classList.add('disabled');  // .disabled 클래스 추가
+        //   proceedButton.disabled = true;  // 버튼 비활성화
+        // }
+        proceedButton.classList.toggle('enabled',checkbox.checked); // 체크했다면 .enabled 클래스 추가
+        proceedButton.classList.toggle('disabled',!checkbox.checked); // 체크하지 않았다면 .disabled 클래스 추가
+        proceedButton.disabled = !checkbox.checked; // 체크 버튼 활성화/비활성화
       });
     });
   </script>
