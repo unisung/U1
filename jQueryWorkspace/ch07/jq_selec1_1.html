@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 선택자 </title>  
+<script src="js/jquery.js"></script>
+<script>
+$(function(){
+	$("*").css("border","1px solid blue"); // 모든 태그에 테두리를 적용
+	$("#tit").css("background-color","#ff0").css("border","2px solid #f00"); //	id
+	$("h2").css("background-color","#0ff").css("border","2px dashed #f00"); // 태그
+	$(".tit").css("background-color","yellowgreen").css("border","2px dashed $0f0");	//클래스
+});
+</script>
+</head>
+<body>
+	<h1 class="tit">제이쿼리</h1>
+	<h2 id="tit">선택자</h2>
+	<h3>직접 선택자</h3>
+</body>
+</html>
