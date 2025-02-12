@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Programming</title>
+	<link rel="stylesheet" href="css/nodelist.css">
+</head>
+<body>
+	<h1>Web Programming</h1>
+	<ul>
+		<li>HTML</li>
+		<li>CSS</li>
+		<li class="blueText drawBorder">Javascript</li>
+	</ul>
+	<script>
+		//1. 요소 노드 만들기 - createElement()
+		let newItem = document.createElement('li');
+		let textNode = document.createTextNode('TypeScript');
+		//2. 텍스트 노드를 요소 노드의 자식 노드로 추가하기 - appendChild()
+		newItem.appendChild(textNode);
+		//3. 요소 노드를 DOM에 추가하기 - appendChild()
+		let ulElement = document.querySelector('ul');
+		ulElement.appendChild(newItem);
+
+		//4. 이미지 노드 만들기 - createElement()
+		let newImg = document.createElement('img');
+		//5. 이미지 노드의 속성 설정하기 - setAttribute()
+		newImg.src = 'images/books.png';
+		//6. 이미지 노드를 DOM에 추가하기 - appendChild()
+		ulElement.appendChild(newImg);
+
+		//7. 노드 삭제하기 - remove()
+	  document.querySelector('h1').remove();
+
+		//8. 클래스 리스트 출력
+		console.log(document.querySelectorAll("ul > li")[2].classList);
+	</script>
+</body>
+</html>
