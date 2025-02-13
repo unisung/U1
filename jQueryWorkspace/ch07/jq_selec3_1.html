@@ -16,7 +16,7 @@
 		  "alt":"바위"})
 			.removeAttr("border"); // attr(속성, 값) 메서드는 선택한 요소의 속성을 변경한다.(setter)
 			
-		var srcVal = $("#sec_1 img").attr(); // attr() 메서드는 선택한 요소의 속성을 가져온다.(getter)
+		var srcVal = $("#sec_1 img").attr("border"); // attr('속성명') 메서드는 선택한 요소의 속성명에 해당하는 값을 가져온다.(getter)
 		console.log(srcVal);
 
 		var result_2 = $("#sec_2").text(); // text() 메서드는 선택한 요소의 text을 가져온다.(getter)
