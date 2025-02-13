@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 1.jquery 라이브러리 연결 -->
+  <script src="js/jquery.js"></script>
+  <!-- 2.jquery적용 -->
+  <script>
+  $(function(){
+    // $("#menu li:first").css("background-color","#ff0");
+    // $("#menu li:last").css({"background-color":"#00f"}); 
+    // //짝수/홀수번째 적용
+    // $("#menu li:even").css({"background-color":"yellowgreen"});
+    // $("#menu li:odd").css({"background-color":"violet"});
+
+   // eq(인덱스번호), lt(인덱스번호보다 작은), gt(인덱스번호보다 큰)
+  //$("#menu li").eq(2).css({"background-color":"#000", "color":"#fff"});
+	 //$("#menu li:lt(2)").css({"background-color":"#0ff"});
+	 //$("#menu li:gt(2)").css({"background-color":"#f0f"});
+ //첫번째 마지막
+   //$("li:first-of-type").css({"background-color":"#ff0"});
+	 //$("li:last-of-type").css({"background-color":"#0ff"});
+   
+   //nth-child(순번), nth-of-type(순번)
+   //$("#menu li:nth-child(1)").css({"background-color":"#ff0"});
+   //$("#menu li:nth-child(2n)").css({"border":"2px dashed #f00"});
+   $("#menu li:nth-last-child(2)").css({"background-color":"#0ff"});
+  });  //제이쿼리 실행
+  </script>
+</head>
+<body>
+  
+	<h1>탐색 선택자</h1>
+	<ul id="menu">
+		<li>내용1</li>
+		<li>내용2</li>
+		<li>내용3</li>
+		<li>내용4</li>
+	</ul>
+</body>
+</html>
