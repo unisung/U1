@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 효과와 애니메이션 </title>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function( ) {
+	$(".btn2").hide(); // hide() - display:none <- 화면에 보이지 않고, 영역도 없어짐 vs visibility:hidden <- 화면에 보이지 않지만, 영역은 남아있음
+
+	$(".btn1").on("click",function(){
+		$(".box").slideUp(1000,"linear",function(){
+			$(".btn1").hide();
+			$(".btn2").show();
+		});
+	});
+
+	$(".btn2").on("click", function(){
+		$(".box").fadeIn(1000,"swing",function(){
+			$(".btn2").hide();
+			$(".btn1").show();
+		});
+	});
+  
+	$(".btn3").on("click", function(){
+		$(".box").slideToggle(1000,"swing");
+	  });
+
+	$(".btn4").on("click", function(){
+		$(".box").fadeTo("fast",0.3);
+	});
+
+	$(".btn5").on("click", function(){
+		$(".box").fadeTo("fast",1);
+	});
+});
+</script>
+<style>
+	.content{
+		width:400px;
+		background-color: #eee;
+	}
+</style>
+</head>
+<body>
+	<p>
+		<button class="btn1">slideUp</button>
+		<button class="btn2">fadeIn</button>
+	</p>
+	<p>
+		<button class="btn3">toggleSide</button>
+	</p> 
+	<p>
+		<button class="btn4">fadeTo(0.3)</button>
+		<button class="btn5">fadeTo(1)</button>
+	</p>   
+	<div class="box">
+		<div class="content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac tempor metus, eu scelerisque lacus. Fusce vel lorem ut ante venenatis imperdiet et eu nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed rhoncus, ligula ut varius ultricies, ipsum diam fermentum eros, sed aliquam quam quam et metus. 
+		</div>
+	</div>
+</body>
+</html>
