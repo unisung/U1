@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<title>Insert title here</title>
+
+<!-- <script type="text/javascript" src="jquery-1.8.2.js"></script> -->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<style type="text/css">
+
+#box1{
+
+ background: #006400;
+
+ height: 50px;
+
+ width: 50px;
+
+ position: relative;
+
+ }
+
+ 
+
+#box2{
+
+ background: #800080;
+
+ height: 50px;
+
+ width: 50px;
+
+ position: relative;
+
+ }
+
+ 
+
+#box3{
+
+ background: #00008b;
+
+ height: 50px;
+
+ width: 50px;
+
+ position: relative;
+
+ }
+
+ 
+
+#box4{
+
+ background: #ff0000;
+
+ height: 50px;
+
+ width: 50px;
+
+ position: relative;
+
+ }
+
+</style>
+
+<script type="text/javascript">
+
+$(function(){
+
+ $("#start1").click(function(){
+
+  //불투명도가 0.1로 변하면서 오른쪽으로 500만큼 2초 동안 이동
+
+  $("#box1").animate({opacity:"0.1",left:"500"},2000)
+
+  //불투명도가 0.4로 변하면서, height,width값이 100으로 늘어나고 left 100위치로 2초 동안 이동
+
+  .animate({opacity:"0.4",top:"0",left:"100", height:"100", width:"100"},2000)
+
+  //1초 동안 위로 접히는 효과
+
+  .slideUp(1000)
+
+  //1초 동안 아래로 펼쳐지는 효과
+
+  .slideDown(1000)
+
+  //불투명도가 1로 증가하고 left 0 위치로 height,width값이 50으로 줄어나고 1초 동안 이동
+
+  .animate({opacity:"1",left:"0",height:"50", width:"50"},1000)
+
+  return false;
+
+  
+
+ });
+
+ 
+
+ $("#stop1").click(function(){
+
+  //id가 box1에 적용 되어 있는 animate함수를 정지시킨다.
+  //:현 진행되고 있는 효과는 정지되고 현재 효과의 끝으로 이동한후 나머지 효과들은 지워 진다.
+
+  $("#box1").stop(true,true);
+
+ });
+
+ 
+
+ $("#start2").click(function(){
+
+  //불투명도가 0.1로 변하면서 오른쪽으로 500만큼 2초 동안 이동
+
+  $("#box2").animate({opacity:"0.1",left:"500"},2000)
+
+  //불투명도가 0.4로 변하면서, height,width값이 100으로 늘어나고 left 100위치로 2초 동안 이동
+
+  .animate({opacity:"0.4",top:"0",left:"100", height:"100", width:"100"},2000)
+
+  //1초 동안 위로 접히는 효과
+
+  .slideUp(1000)
+
+  //1초 동안 아래로 펼쳐지는 효과
+
+  .slideDown(1000)
+
+  //불투명도가 1로 증가하고 left 0 위치로 height,width값이 50으로 줄어나고 1초 동안 이동
+
+  .animate({opacity:"1",left:"0",height:"50", width:"50"},1000)
+
+  return false;
+
+  
+
+ });
+
+ 
+
+ $("#stop2").click(function(){
+
+  //id가 box2에 적용 되어 있는 animate함수를 정지시킨다.
+
+  //:현 진행되고 있는 효과는 정지되고 모든 효과들이 정지된다.
+
+  $("#box2").stop(true,false);
+
+ });
+
+ 
+
+ $("#start3").click(function(){
+
+  //불투명도가 0.1로 변하면서 오른쪽으로 500만큼 2초 동안 이동
+
+  $("#box3").animate({opacity:"0.1",left:"500"},2000)
+
+  //불투명도가 0.4로 변하면서, height,width값이 100으로 늘어나고 left 100위치로 2초 동안 이동
+
+  .animate({opacity:"0.4",top:"0",left:"100", height:"100", width:"100"},2000)
+
+  //1초 동안 위로 접히는 효과
+
+  .slideUp(1000)
+
+  //1초 동안 아래로 펼쳐지는 효과
+
+  .slideDown(1000)
+
+  //불투명도가 1로 증가하고 left 0 위치로 height,width값이 50으로 줄어나고 1초 동안 이동
+
+  .animate({opacity:"1",left:"0",height:"50", width:"50"},1000)
+
+  return false;
+
+  
+
+ });
+
+ 
+
+ $("#stop3").click(function(){
+
+  //id가 box3에 적용 되어 있는 animate함수를 정지시킨다.
+
+  //:현 진행되고 있는 효과는 정지되고 현재 효과의 끝으로 이동한후   남은 효과들이 실행된다.
+
+  $("#box3").stop(false,true);
+
+ });
+
+ 
+
+ $("#start4").click(function(){
+
+  //불투명도가 0.1로 변하면서 오른쪽으로 500만큼 2초 동안 이동
+
+  $("#box4").animate({opacity:"0.1",left:"500"},2000)
+
+  //불투명도가 0.4로 변하면서, height,width값이 100으로 늘어나고 left 100위치로 2초 동안 이동
+
+  .animate({opacity:"0.4",top:"0",left:"100", height:"100", width:"100"},2000)
+
+  //1초 동안 위로 접히는 효과
+
+  .slideUp(1000)
+
+  //1초 동안 아래로 펼쳐지는 효과
+
+  .slideDown(1000)
+
+  //불투명도가 1로 증가하고 left 0 위치로 height,width값이 50으로 줄어나고 1초 동안 이동
+
+  .animate({opacity:"1",left:"0",height:"50", width:"50"},1000)
+
+  return false;
+
+  
+
+ });
+
+ 
+
+ $("#stop4").click(function(){
+
+  //id가 box3에 적용 되어 있는 animate함수를 정지시킨다.
+
+  //:현 진행되고 있는 효과는 정지되고   남은 효과들이 실행된다.
+
+  $("#box4").stop(false,false);
+
+ });
+
+})
+
+</script>
+
+</head>
+
+<body>
+
+ <a href="#" id="start1">START1</a> &nbsp; <a href="#" id="stop1">STOP(TRUE,TRUE)</a>
+ <div id="box1"></div>
+ <a href="#" id="start2">START2</a> &nbsp; <a href="#" id="stop2">STOP(TRUE,FALSE)</a>
+ <div id="box2"></div>
+ <a href="#" id="start3">START3</a> &nbsp; <a href="#" id="stop3">STOP(FALSE,TRUE)</a>
+ <div id="box3"></div>
+ <a href="#" id="start4">START4</a> &nbsp; <a href="#" id="stop4">STOP(FALSE,FALSE)</a>
+ <div id="box4"></div>
+</body>
+
+</html>
+[출처] jQuery 애니메이션 정지 stop()|작성자 방글라
