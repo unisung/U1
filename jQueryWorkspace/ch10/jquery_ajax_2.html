@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title> Asynchronous Javascript and XML </title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function(){
+        $.ajax({
+          url:"js/MOCK_DATA.json",
+          dataType:"json",
+          success:function(data){
+            if(data.length > 0){
+              var tb = $("<table />"); //table 태그 생성
+              for(var i in data){ //i는 0부터 data.length-1까지
+                var $id = data[i].id;
+                var $first_name = data[i].first_name;
+                var $last_name = data[i].last_name;
+                var $email = data[i].email;
+                var $gender = data[i].gender;
+
+                //tr 태그 생성 $("<tr/>")는 jQuery 함수
+                var row = $("<tr />").append(
+                  $("<td />").text($id), 
+                  $("<td />").text($first_name), 
+                  $("<td />").text($last_name), 
+                  $("<td />").text($email), 
+                  $("<td />").text($gender)
+                 ); //tr 태그 생성
+
+                 tb.append(row); //table에 tr을 추가
+              }
+              $(".wrap").append(tb); //wrap에 table을 추가
+            }
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrap"></div>
+  </body>
+</html>
