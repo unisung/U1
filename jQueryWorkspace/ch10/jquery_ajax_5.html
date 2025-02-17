@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(function() {
+  const proxyServerUrl = 'http://localhost:3000/proxy'; // 프록시 서버 주소
+  const xmlFileUrl = 'http://myhome.chosun.com/rss/www_section_rss.xml'; //요청하는 XML 파일 주소
+  $.ajax({
+    url: proxyServerUrl, // 프록시 서버 주소
+    data: { url: xmlFileUrl },  // 요청하는 XML 파일 주소
+    dataType:"xml", // XML 형식으로 데이터를 받음
+    success: function(data) { // 요청 성공 시
+      let $items = $(data).find("item");
+
+      if($items.length > 0) {
+        $items = $items.slice(0,10);  // 10개만 가져오기
+        const $ulTag = $("<ul />");   // ul 태그 생성
+        $.each($items, function(i, o) {   // item 태그 반복
+          const $title = $(o).find("title").text();   // title 태그의 텍스트      
+          const $link = $(o).find("link").text();   // link 태그의 텍스트
+          
+          const $aTag = $("<a />")  // a 태그 생성
+          .attr({
+            "href":$link, // href 속성에 링크 주소 설정
+            "target":"_blank" 
+            })
+          .text($title);  // a 태그 텍스트 설정
+
+          const $liTag = $("<li />") // li 태그 생성
+          .append($aTag); // a 태그를 li 태그에 추가
+
+          $ulTag.append($liTag); // li 태그를 ul 태그에 추가
+        });
+        $(".wrap").append($ulTag);  // ul 태그를 wrap 클래스에 추가
+      }
+    }
+  });
+});
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>
