@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Deferred </title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+  // Deferred Test함수 생성
+  function deferredTest(result){
+    const deferred = $.Deferred(); // Deferred 객체 생성
+
+    setTimeout(function(){
+      if(result){ //result가 true일 경우 성공(result===true)-Deferred객체가 생성되었으면 true(요청결과 성공)
+        deferred.resolve('성공'); // 성공 시 resolve 호출
+      }else{
+        deferred.reject('실패'); // 실패 시 reject 호출
+      }
+    },1000); // 1초 후에 콜백함수 실행
+
+   return deferred.promise() // promise 객체 반환
+  } // deferredTest 함수 종료
+
+  deferredTest(true)
+  .done(data => console.log('done',data))  // 성공 시
+  .fail(data => console.log(data)) // 실패 시
+  .then(data => { console.log('then1:',data); 
+                  return $.ajax("https://jsonplaceholder.typicode.com/posts/1");
+                }) // 성공, 실패 시
+  .then(data => console.log('then2:', data)) // 성공, 실패 시
+  .always(()=>console.log('항상실행')); // Deferred 객체의 메서드 체이닝
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>
