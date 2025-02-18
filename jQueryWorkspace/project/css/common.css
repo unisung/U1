@@ -1,0 +1,21 @@
+@charset "utf-8";
+@import url("reset.css");
+*,*:after, *:before{box-sizing: border-box;}
+body{
+  background: #fffcf6 url(../images/common/bg-top.png) 0 0 repeat-x;
+  font: 14px Malgun Gothic, "맑은고딕", sans-serif;
+  color: #555;
+  min-width: 320px;
+}
+button{background: none;border:none; cursor: pointer;}
+
+/* header */
+#header-wrap{
+  background: url(../images/common/bg-gnb.png) 0 100% repeat-x;
+  margin-bottom: 40px;
+}
+.header-inner{
+  position: relative;
+  height: 172px;
+}
+.header-inner, #container, #footer{max-width: 1008px;margin:0 auto;}
