@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 리액트 사용 준비 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<!-- 리액트를 실행할 DOM 요소 -->
+<div id="root"></div>
+
+<!-- 리액트 코드 -->
+<script type="text/babel">
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {count:0};//초기값 설정
+    console.log('생성자 호출');
+  
+    //이벤트처리 메소드(핸들러) binding
+    this.countUP = this.countUP.bind(this);
+  }
+
+  render(){
+    return <div>
+        <h1>클릭한 횟수: {this.state.count}</h1>
+        <button onClick={this.countUP}>클릭</button>
+      </div>;
+  }
+
+  componentDidMount(){
+    console.log('컴포넌트가 화면에 나타남');
+  }
+  
+  //이벤트처리 메소드(핸들러) 선언
+  countUP(event){
+    this.setState(
+      {count:this.state.count + 1}
+    );  //상태값 변경 
+  }
+}
+
+//출력
+const container = document.getElementById('root'); // 리액트를 실행할 DOM 요소
+ReactDOM.render(<App />, container); // 리액트 요소 출력
+</script>
+</body>
+</html>
