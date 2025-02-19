@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 리액트 사용 준비 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<!-- 리액트를 실행할 DOM 요소 -->
+  <div id="root"></div>
+
+  <!--  스크립트 -->
+<script type="text/babel">
+class App extends React.Component{
+  //생성자
+  constructor(props){
+    super(props)
+    this.state = {time: new Date()};//초기값 설정
+    console.log('생성자 호출');
+  }
+
+  //화면출력
+  render(){
+    return <h1>{this.state.time.toLocaleTimeString()}</h1>;
+  }
+
+  //컴포넌트가 화면에 나타날 때
+  componentDidMount(){
+    this.timerId = setInterval(()=>{
+      this.setState({time: new Date()}) // this는 객체 자신을 가리킴, this를 사용하려면 화살표 함수를 사용해야 함 
+    }, 1000);
+    console.log('컴포넌트가 화면에 나타남-this.timerId:', this.timerId);
+  }
+
+  //컴포넌트가 화면에서 사라질 때
+  componentWillUnmount(){
+    clearInterval(this.timerId);
+    console.log('컴포넌트가 화면에서 사라짐-this.timerId:', this.timerId);
+  }
+}
+
+//출력
+const container = document.getElementById('root'); // 리액트를 실행할 DOM 요소
+ReactDOM.render(<App />, container); // 리액트 요소 출력
+</script>
+</body>
+</html>
