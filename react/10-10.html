@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 리액트 사용 준비 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<!-- 리액트를 실행할 DOM 요소 -->
+<div id="root"></div>
+
+<!-- 리액트 코드 -->
+<script type="text/babel">
+//리액트 컴포넌트 생성
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      checked:false
+    }
+    // 이벤트 처리 메소드(핸들러) binding - 생성자 내
+  this.handleCheck = this.handleCheck.bind(this);
+  }
+
+
+  //state가 변경될 때마다 호출되는 라이프사이클 메소드
+  render(){
+    //속성선언 {}, 조건?참:거짓
+    const textStyle={
+      color:this.state.checked ? 'blue' : 'red'
+    }
+    return<div>
+      <input type="checkbox" checked={this.state.checked} onChange={this.handleCheck}/>
+      <h1 style={textStyle}>{this.state.checked?'체크됨':'체크안됨'}</h1>
+      </div>;
+  }
+
+// 이벤트 처리 메소드(핸들러) 선언
+handleCheck(event){
+  this.setState(
+    {checked:event.target.checked}
+  ); //상태값 변경
+}
+
+}
+//출력
+const container = document.getElementById('root'); // 리액트를 실행할 DOM 요소
+ReactDOM.render(<App />, container); // 리액트 요소 출력
+</script>
+</body>
+</html>
