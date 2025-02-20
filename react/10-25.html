@@ -20,6 +20,13 @@ class App extends React.Component{
 
     //지난 설정 불러오기
     this.state = this.load();
+
+    //메소드 바인딩
+    this.textChange = this.textChange.bind(this);
+    this.textKeyDown = this.textKeyDown.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+    this.changeCheckData = this.changeCheckData.bind(this);
   }
 
   save(){
@@ -31,7 +38,7 @@ class App extends React.Component{
     try{
       output = JSON.parse(localStorage.state)
     }catch(err){
-      console.log(err)
+      //console.log('load()오류:',err)
     }
 
     //이전값이 존재하고, keyCount와 currentValue가 존재하면 반환
@@ -41,7 +48,7 @@ class App extends React.Component{
       output = {
         keyCount: 0,
         currentValue: '',
-        list: []
+        todos: []
       }
     }
     return output
@@ -54,9 +61,23 @@ class App extends React.Component{
   render(){
     return <div>
       <h1>할 일 목록</h1>
-      <input />
-      <button>추가하기</button>
-      <div></div>
+      <input 
+       value = {this.state.currentValue}
+       onChange = {this.textChange}
+       onKeyDown = {this.textKeyDown}
+      />
+      <button onClick={this.buttonClick}>추가하기</button>
+      <div>
+       {this.state.todos.map((todo)=>{
+          return <TodoItem 
+            dataKey = {todo.key}
+            isDone = {todo.isDone}
+            text = {todo.text}
+            removeItem = {this.removeItem}
+            changeCheckData = {this.changeCheckData}
+          />
+       })}
+        </div>
       </div>
   }
 //input 태그 테스트 변환시 호출
@@ -66,24 +87,30 @@ textChange(event){
     })
   }
 //input 태그에 Enter키 입력시
-textKeyDown(event){
-  const ENTER = 13
-  if(event.keyCode === ENTER){
-    this.buttonClick()
-  }
+textKeyDown (event) {
+          const ENTER = 13
+          if (event.keyCode === ENTER) {
+            this.buttonClick()
+          }
 }
-//마우스로 추가 버튼 클릭시
-buttonClick(event){
-  if(this.state.currentValue !==''){
-    this.setState() //새로운 할 일 추가
-    this.state.keyCount += 1 //keyCount 증가
-    this.state.currentValue = ''   //currentValue 초기화
-  }
+
+buttonClick (event) {
+        if (this.state.currentValue.trim() !== '') {
+            this.setState({
+              todos: [...this.state.todos, {
+                key: this.state.keyCount.toString(),
+                isDone: false,
+                text: this.state.currentValue
+              }]
+            })
+            this.state.keyCount += 1
+            this.state.currentValue = ''
+          }
 }
 //할 일 목록에서 삭제 버튼 클릭시
 removeItem(key){
   this.setState({
-    todos: this.state.todos.filter(()=>{
+    todos: this.state.todos.filter((todo)=>{
       return todo.key !== key
     }) //filter-배열데이터에서 조건에 맞는 요소만 추출 -> 배열로저장
   }) //할 일 목록에서 해당 항목 삭제
@@ -95,18 +122,43 @@ changeCheckData(key, changed){
   this.setState({todos:target}) //할 일 목록 갱신
 }
 }
+//할 일 목록의 각 항목(TodoItem)을 나타내는 클래스
 class TodoItem extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      isDone:props.isDone
+    }
+    this.checkboxClick = this.checkboxClick.bind(this)
   }
-
-  checkboxClick(){}
-  componentDidUpdate(prevProps){}
+//화면에 출력
+  render(){
+    const textStyle = {}
+    textStyle.textDecoration = this.state.isDone ? 'line-through' : '' //완료시 취소선긋기
+    return(
+      <div style={textStyle}>
+        <input type="checkbox" checked={this.state.isDone} onChange = {this.checkboxClick} />
+        <span>{this.props.text}</span>
+        <button onClick={()=>this.props.removeItem(this.props.dataKey)}>제거</button>
+      </div>
+    )
+  }
+//체크박스 클릭시
+  checkboxClick(){
+    const changed  = !this.state.isDone // 완료여부 반전 true->false, false->true
+    this.props.changeCheckData(this.props.dataKey, changed)
+  }
+//완료여부 변경시  
+  componentDidUpdate(prevProps){
+    if(prevProps.isDone !== this.props.isDone){
+      this.setState({isDone:this.props.isDone})
+    }
+  }
 }
 
 //출력
 const container = document.getElementById('root'); // 리액트를 실행할 DOM 요소
-ReactDom.render(<App />, container); // 리액트 요소 출력
+ReactDOM.render(<App />, container); // 리액트 요소 출력
 </script>
 </body>
 </html>
