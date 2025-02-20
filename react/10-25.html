@@ -17,16 +17,83 @@
 class App extends React.Component{
   constructor(props){
     super(props);
+
+    //지난 설정 불러오기
+    this.state = this.load();
   }
-  save(){ } 
-  load(){}
-  componentDidUpdate(){}
-  render(){}
-  textChange(event){}
-  textKeyDown(event){}
-  buttonClick(event){}
-  removeItem(key){}
-  changeCheckData(key, changed){}
+
+  save(){
+     localStorage.state = JSON.stringify(this.state); 
+  }
+
+  load(){
+    let output
+    try{
+      output = JSON.parse(localStorage.state)
+    }catch(err){
+      console.log(err)
+    }
+
+    //이전값이 존재하고, keyCount와 currentValue가 존재하면 반환
+    if(output !== undefined && output.keyCount !== undefined && output.currentValue !== undefined){
+      output = JSON.parse(localStorage.state)
+    }else{ //output === undefined || output.keyCount === undefined || output.currentValue !== undefined
+      output = {
+        keyCount: 0,
+        currentValue: '',
+        list: []
+      }
+    }
+    return output
+  }
+  // 텍스트 변경
+  componentDidUpdate(){
+    this.save()
+  }
+
+  render(){
+    return <div>
+      <h1>할 일 목록</h1>
+      <input />
+      <button>추가하기</button>
+      <div></div>
+      </div>
+  }
+//input 태그 테스트 변환시 호출
+textChange(event){
+    this.setState({
+      currentValue: event.target.value
+    })
+  }
+//input 태그에 Enter키 입력시
+textKeyDown(event){
+  const ENTER = 13
+  if(event.keyCode === ENTER){
+    this.buttonClick()
+  }
+}
+//마우스로 추가 버튼 클릭시
+buttonClick(event){
+  if(this.state.currentValue !==''){
+    this.setState() //새로운 할 일 추가
+    this.state.keyCount += 1 //keyCount 증가
+    this.state.currentValue = ''   //currentValue 초기화
+  }
+}
+//할 일 목록에서 삭제 버튼 클릭시
+removeItem(key){
+  this.setState({
+    todos: this.state.todos.filter(()=>{
+      return todo.key !== key
+    }) //filter-배열데이터에서 조건에 맞는 요소만 추출 -> 배열로저장
+  }) //할 일 목록에서 해당 항목 삭제
+}
+//할일 목록 중 체크박스(완료여부) 클릭시
+changeCheckData(key, changed){
+  let target = [...this.state.todos] //할 일 목록 복사
+  target.filter((todo) => todo.key === key)[0].isDone = changed
+  this.setState({todos:target}) //할 일 목록 갱신
+}
 }
 class TodoItem extends React.Component{
   constructor(props){
