@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <!-- 리액트 사용 준비 -->
+   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <!-- 리액트를 실행할 DOM 요소 -->
+<div id="root"></div>
+
+<!-- 리액트 코드 -->
+<script type="text/babel">
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {time: new Date()}
+  }
+
+  componentDidMount(){
+   this.timerId = setInterval(()=>{
+    this.setState({time:new Date()})
+   },1000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timerId)
+  }
+
+  render(){
+    return <ul>
+      <Item value={this.state.time.toLocaleString()} />
+      <Item value={this.state.time.toLocaleString()} />
+      <Item value={this.state.time.toLocaleString()} />
+      </ul>
+  }
+
+}
+class Item extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {value:props.value}
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.value !== this.props.value){
+      this.setState({value:this.props.value})
+    }
+  }
+
+  render(){
+    return <li>{this.state.value}</li>
+  }
+}
+
+// 출력하기
+const container = document.getElementById('root')
+ReactDOM.render(<App />, container)
+</script>
+</body>
+</html>
